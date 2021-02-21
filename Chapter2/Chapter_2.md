@@ -10,7 +10,7 @@
 
                    Part II: EXPRESSION PARSING
 
-
+```
 *****************************************************************
 *                                                               *
 *                        COPYRIGHT NOTICE                       *
@@ -18,7 +18,7 @@
 *   Copyright (C) 1988 Jack W. Crenshaw. All rights reserved.   *
 *                                                               *
 *****************************************************************
-
+```
 
 GETTING STARTED
 
@@ -53,27 +53,26 @@ the  "cradle" that I gave last time.  We'll be using it again for
 other experiments.  Then add this code:
 
 
-{---------------------------------------------------------------}
-{ Parse and Translate a Math Expression }
+```c++
+//Parse and Translate a Math Expression
 
-procedure Expression;
-begin
-   EmitLn('MOVE #' + GetNum + ',D0')
-end;
-{---------------------------------------------------------------}
-
+void Expression()
+{
+   EmitLn("MOVE #" + GetNum() + ",D0")
+}
+```
 
 And add the  line  "Expression;"  to  the main program so that it
 reads:
-                              
 
-{---------------------------------------------------------------}
-begin
-   Init;
-   Expression;
-end.
-{---------------------------------------------------------------}
-
+```c++
+int main()
+{
+   Init();
+   Expression();
+   return 0;
+}
+```
 
 Now  run  the  program. Try any single-digit number as input. You
 should get a single line of assembler-language output.    Now try
