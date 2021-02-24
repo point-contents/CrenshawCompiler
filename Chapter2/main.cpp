@@ -21,9 +21,9 @@ void Expected(std::string s) { Abort(s + " Expected"); }
 
 void Match(char x) {
     if (Look == x) {
-        getchar();
+	getchar();
     } else {
-        Expected(std::to_string(x));
+	Expected(std::to_string(x));
     }
 }
 
@@ -40,7 +40,7 @@ bool IsDigit(char c) { return std::isdigit(c); }
 std::string GetName() {
     char c = Look;
     if (!IsAlpha(Look)) {
-        Expected("Name");
+	Expected("Name");
     }
     getchar();
     return std::to_string(c);
@@ -48,14 +48,15 @@ std::string GetName() {
 
 // Get a Number
 
-char* GetNum() {
+std::string GetNum() {
     char c = Look;
+    c = getchar();
+
     if (!IsDigit(Look)) {
-        Expected("Integer");
-        return "";
+	Expected("Integer");
+	return "";
     }
-    getchar();
-    return
+    return std::to_string(c);
 }
 
 // Output a String with Tab
@@ -67,12 +68,19 @@ void EmitLn(std::string s) {
     std::cout << std::endl;
 }
 
+void Expression()
+{
+   EmitLn("MOVE #" + GetNum() + ",D0");
+}
+
+
 // Initialize
 
 void Init() { getchar(); }
 
 int main() {
     Init();
+    Expression();
     return 0;
 }
 
